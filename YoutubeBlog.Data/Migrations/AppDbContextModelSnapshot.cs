@@ -99,7 +99,7 @@ namespace YoutubeBlog.Data.Migrations
                             IsDeleted = false,
                             Title = "Visual Studio Deneme Makalesi 1",
                             ViewCount = 15
-                        });
+                });
                 });
 
             modelBuilder.Entity("YoutubeBlog.Entity.Entities.Category", b =>
