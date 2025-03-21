@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using YoutubeBlog.Service.Services.Abstrations;
 using YoutubeBlog.Service.Services.Concrete;
 
@@ -9,8 +9,11 @@ namespace YoutubeBlog.Service.Extensions
     {
         public static IServiceCollection LoadServiceLayerExtension(this IServiceCollection services)
         {
+            var assembly = Assembly.GetExecutingAssembly();
+
             services.AddScoped<IArticleService, ArticleService>();
 
+            services.AddAutoMapper(assembly);
             return services;
         }
     }
