@@ -19,7 +19,7 @@ namespace YoutubeBlog.Data.Mapping
                 CreatedBy = "Admin Test",
                 CreatedDate = new DateTime(2025, 3, 13, 13, 30, 4, 725),
                 IsDeleted = false,
-                // UserId = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C")
+                UserId = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C")
             },
              new Article
              {
@@ -32,7 +32,7 @@ namespace YoutubeBlog.Data.Mapping
                  CreatedBy = "Admin Test",
                  CreatedDate = new DateTime(2025, 3, 13, 13, 30, 4, 725),
                  IsDeleted = false,
-                 // UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427")
+                 UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427")
              });
         }
     }

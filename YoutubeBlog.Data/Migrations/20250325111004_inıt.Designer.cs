@@ -12,8 +12,8 @@ using YoutubeBlog.Data.Context;
 namespace YoutubeBlog.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250321140752_UserCreatead")]
-    partial class UserCreatead
+    [Migration("20250325111004_inıt")]
+    partial class inıt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,21 +56,21 @@ namespace YoutubeBlog.Data.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "501985d2-9f30-436b-ac7e-02d54c875fe0",
+                            ConcurrencyStamp = "eadb9770-6076-433b-9267-5edd19b8d36e",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "b783301c-66be-4f09-946f-e38af02fd28d",
+                            ConcurrencyStamp = "46de65ca-32bd-4627-9f9a-9ec9b15d8653",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "0711640c-9853-458c-a595-71cddd896d23",
+                            ConcurrencyStamp = "a1ed62f5-f211-429b-8e7f-891676c81da0",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -183,7 +183,7 @@ namespace YoutubeBlog.Data.Migrations
                         {
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8172fcd2-e6c4-4f02-ab07-9d82c3af0c72",
+                            ConcurrencyStamp = "295eb411-dfb0-4d84-b990-53bb997fd5f9",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Ömer",
@@ -192,10 +192,10 @@ namespace YoutubeBlog.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFX2IOMsWwPVSsAGqebfBln+KMNCzq0aQlOXkfjIFgZ7Mkmle5F88NZ+Vg4iubQFuw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ0hzMRgCJcWvuf349bTeCwuOsfyCt6oykcxf0Z+EA/E+JwfUibPIkEoN6Mb1dACHw==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "c54baa79-ef27-4893-893d-4e60aa91b1d5",
+                            SecurityStamp = "c8e76fa3-35fe-4a60-8aeb-38029c99a469",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -203,7 +203,7 @@ namespace YoutubeBlog.Data.Migrations
                         {
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f344c5cf-ebfe-4c89-9ece-03b841b40505",
+                            ConcurrencyStamp = "2335a65f-ac9d-437a-b9dc-d928d97fca20",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -212,10 +212,10 @@ namespace YoutubeBlog.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAED1RzAl7+EzZ9WxsKfZJ+yr4NUOpcKvV8D5te7U1OMSq+ygWGJk1MB0xd56OUV1mfQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGxgOI6IN0wwhGbYUDxMN5v00AIOaw2lsTsYTfFjsmZI17Fi6GnxuKFWK99+cCA+JA==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "63d04477-e1e1-499c-baad-7dd7b6437d9f",
+                            SecurityStamp = "0bb36225-12fa-4013-b2fa-93bdccfaba42",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -320,9 +320,6 @@ namespace YoutubeBlog.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AppUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
@@ -343,7 +340,7 @@ namespace YoutubeBlog.Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ImageId")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -359,16 +356,19 @@ namespace YoutubeBlog.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
-
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("ImageId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
 
@@ -383,6 +383,7 @@ namespace YoutubeBlog.Data.Migrations
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
                             Title = "Asp.net Core Deneme Makalesi 1",
+                            UserId = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             ViewCount = 15
                         },
                         new
@@ -395,6 +396,7 @@ namespace YoutubeBlog.Data.Migrations
                             ImageId = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
                             Title = "Visual Studio Deneme Makalesi 1",
+                            UserId = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             ViewCount = 15
                         });
                 });
@@ -527,7 +529,7 @@ namespace YoutubeBlog.Data.Migrations
             modelBuilder.Entity("YoutubeBlog.Entity.Entities.AppUser", b =>
                 {
                     b.HasOne("YoutubeBlog.Entity.Entities.Image", "Image")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -579,10 +581,6 @@ namespace YoutubeBlog.Data.Migrations
 
             modelBuilder.Entity("YoutubeBlog.Entity.Entities.Article", b =>
                 {
-                    b.HasOne("YoutubeBlog.Entity.Entities.AppUser", null)
-                        .WithMany("Articles")
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("YoutubeBlog.Entity.Entities.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
@@ -591,13 +589,19 @@ namespace YoutubeBlog.Data.Migrations
 
                     b.HasOne("YoutubeBlog.Entity.Entities.Image", "Image")
                         .WithMany("Articles")
-                        .HasForeignKey("ImageId")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("YoutubeBlog.Entity.Entities.AppUser", "User")
+                        .WithMany("Articles")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
                     b.Navigation("Image");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("YoutubeBlog.Entity.Entities.AppUser", b =>
@@ -613,6 +617,8 @@ namespace YoutubeBlog.Data.Migrations
             modelBuilder.Entity("YoutubeBlog.Entity.Entities.Image", b =>
                 {
                     b.Navigation("Articles");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
